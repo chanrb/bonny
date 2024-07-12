@@ -1,0 +1,25 @@
+CACHE MANIFEST
+
+CACHE:
+index.html
+dist/sweetalert2.css
+dist/sweetalert2.min.css
+dist/sweetalert2.min.js
+images/splash.png
+images/twmj.png
+images/twmj1.png
+scripts/app.js
+scripts/hideAddressBar.js
+scripts/jquery-1.7.1.min.js
+scripts/jquery.mobile-1.1.0.min.js
+content/greenbutton.css
+content/jquery.mobile-1.1.0.min.css
+content/purplebutton.css
+content/redbutton.css
+content/images/ajax-loader.gif
+content/images/ajax-loader.png
+content/images/icons-18-black.png
+content/images/icons-18-white.png
+content/images/icons-36-black.png
+content/images/icons-36-white.png
+

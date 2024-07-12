@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html manifest="cache.manifest">
+<head>
+	<title>台灣麻雀計番機</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="application-name" content="台灣麻雀計番">
+	<link rel="stylesheet" type="text/css" href="dist/sweetalert2.min.css">
+	<link href="content/jquery.mobile-1.1.0.min.css" rel="stylesheet" type="text/css" />
+	<link href="content/redbutton.css" rel="stylesheet" type="text/css" />
+	<link href="content/greenbutton.css" rel="stylesheet" type="text/css" />
+	<link rel="apple-touch-icon" href=images/twmj.png">
+	<link rel="apple-touch-startup-image" href="images/splash.png">
+	<script src="scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+	<script src="scripts/jquery.mobile-1.1.0.min.js" type="text/javascript"></script>
+	<script src="dist/sweetalert2.min.js"></script>
+</head>
+<body>
+	<div id="calculator" data-role="page" data-theme="b" data-rockncoder-jspage="calculator">
+		<header data-role="header">
+			<h1><span style="color:#FFFF00">台灣麻雀計番機</span></h1>
+      </header>
+		<section data-role="content" >
+			<input type="text"  id="displayControl" style="text-align: center;" placeholder="請輸入番數" value="" />
+			<div class="ui-grid-a">
+				<div class="ui-block-a"><button data-theme="g" data-icon="refresh" id="keyC" data-rockncoder-tag="C"><b>A  C</b></button></div>
+				<div class="ui-block-b""><button data-theme="b" data-icon="arrow-l" id="keyCe" data-rockncoder-tag="CE" ><b>◄───</b></button></div>
+			</div>
+			<div class="ui-grid-b">
+				<div class="ui-block-a"><button data-theme="c" id="key7" data-rockncoder-tag="7" ><b>7</b></button></div>
+				<div class="ui-block-b"><button data-theme="c" id="key8" data-rockncoder-tag="8" >8</button></div>
+				<div class="ui-block-c"><button data-theme="c" id="key9" data-rockncoder-tag="9" >9</button></div>
+				<div class="ui-block-a"><button data-theme="c" id="key4" data-rockncoder-tag="4" >4</button></div>
+				<div class="ui-block-b"><button data-theme="c" id="key5" data-rockncoder-tag="5" >5</button></div>
+				<div class="ui-block-c"><button data-theme="c" id="key6" data-rockncoder-tag="6" >6</button></div>
+				<div class="ui-block-a"><button data-theme="c" id="key1" data-rockncoder-tag="1" >1</button></div>
+				<div class="ui-block-b"><button data-theme="c" id="key2" data-rockncoder-tag="2" >2</button></div>
+				<div class="ui-block-c"><button data-theme="c" id="key3" data-rockncoder-tag="3" >3</button></div>
+			</div>
+			<div class="ui-grid-a">
+            <div class="ui-block-a"><button data-theme="c" id="key0" data-rockncoder-tag="0" >0</button></div>
+				<div class="ui-block-b"><button data-theme="e" id="keyAdd" >拉下一舖</button></div>
+			</div>
+			<div class="ui-grid-solo">
+				<div class="ui-block-a"><button data-theme="r" id="keyEquals" data-icon="check" ><b>結    算     </b></button></div>
+			</div>
+		</section>
+	</div>
+	<script src="scripts/hideAddressBar.js" type="text/javascript"></script>
+	<script src="scripts/app.js" type="text/javascript"></script>
+</body>
+</html>
