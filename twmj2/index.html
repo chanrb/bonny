@@ -667,6 +667,7 @@
             border: 1px solid black;
             border-radius: 5px;
             cursor: pointer;
+			white-space: nowrap;
         }
 
         .my-button:hover {
@@ -923,7 +924,7 @@
     </script>
     <script>
         const table = document.querySelector('table');
-
+		
         table.addEventListener('keydown', function(event) {
             if (event.target.contentEditable === 'true' && event.key === 'Enter') {
                 const cell = event.target;
@@ -942,17 +943,27 @@
 
         table.addEventListener('focus', function(event) {
             if (event.target.contentEditable === 'true') {
-                event.target.addEventListener('blur', onCellBlur);
+				var range = document.createRange();
+                var selection = window.getSelection();
+                range.selectNodeContents(event.target);
+                selection.removeAllRanges();
+                selection.addRange(range);
             }
         }, true);
 
-        function onCellBlur(event) {
-            const cell = event.target;
-			if (!validateInput(cell)) {
-				alert("Input must be a valid positive number.");
-			}	
-			valueChanged(cell);
-        }
+		const editableCells = table.querySelectorAll('[contenteditable="true"]');
+		editableCells.forEach(function(cell) {
+			const row = cell.parentElement;
+            const rowIndex = row.rowIndex;
+			if (rowIndex != 1) {
+				cell.addEventListener('blur', function(event) {
+					if (!validateInput(cell)) {
+						alert("Input must be a valid positive number.");
+					}	
+					valueChanged(cell);
+				});
+			}
+        });
 
 		function validateInput(cell) {
 			const row = cell.parentElement;
@@ -968,7 +979,7 @@
                         cell.innerText = cellVal;
 					}
 					else {
-						cell.style.border = "2px solid red";
+						cell.style.boxShadow = "inset 0 0 0 2px red";
 						return false;
 					}
 				}
@@ -1015,11 +1026,8 @@
         }
 
         function resetCell(cell) {
-            cell.innerText = ""
-            cell.style.borderLeft = "none";
-            cell.style.borderTop = "none";
-            cell.style.borderRight = "1px solid black";
-            cell.style.borderBottom = "1px solid black";
+            cell.innerText = "";
+			cell.style.boxShadow = "none";
         }
 
         function clearAllData() {
