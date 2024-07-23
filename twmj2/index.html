@@ -948,9 +948,34 @@
 
         function onCellBlur(event) {
             const cell = event.target;
-            valueChanged(cell);
+			if (!validateInput(cell)) {
+				alert("Input must be a valid positive number.");
+			}	
+			valueChanged(cell);
         }
 
+		function validateInput(cell) {
+			const row = cell.parentElement;
+            const rowIndex = row.rowIndex;
+			if (rowIndex != 1) {
+				cell.innerText = cell.innerText.trim();
+				const cellText = cell.innerText;
+				if (cellText !== "") {
+					const validInput = /^\d+$/;
+					const cellVal = parseInt(cellText);
+					if (validInput.test(cellText) && !isNaN(cellVal)) {
+                        resetCell(cell);
+                        cell.innerText = cellVal;
+					}
+					else {
+						cell.style.border = "2px solid red";
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+		
         function valueChanged(cell) {
             const row = cell.parentElement;
             const rowIndex = row.rowIndex;
@@ -963,31 +988,24 @@
                 payVal2Cell.innerText = ""
 
                 const cellText = cell.innerText.trim();
-                if (cellText !== "") {
-                    const validInput = /^\d+$/;
-                    const cellVal = parseInt(cellText);
-                    if (validInput.test(cellText) && !isNaN(cellVal)) {
-                        resetCell(cell);
-                        cell.innerText = cellVal;
-
-                        var lastPayValCellText = "0"
-                        if (rowIndex > 3) {
-                            const lastPayValCell = table.rows[rowIndex - 1].cells[cellIndex + 1];
-                            lastPayValCellText = lastPayValCell.innerText;
-                        }
-                        if (lastPayValCellText !== "") {
-                            const lastPayVal = parseInt(lastPayValCellText);
-                            if (!isNaN(lastPayVal)) {
-                                payVal = Math.ceil(lastPayVal * 1.5 + cellVal + 5);
-                                payValCell.innerText = payVal;
-                                payVal2Cell.innerText = Math.floor(payVal / 5) + "隻" + (payVal % 5);
-                            }
-                        }
-                    } else {
-                        alert("Input must be a valid positive number.");
-                        cell.style.border = "2px solid red"
-                    }
-                }
+                if (cellText !== "" && validateInput(cell)) {
+					const cellVal = parseInt(cell.innerText);
+					if (!isNaN(cellVal)) {
+						var lastPayValCellText = "0"
+						if (rowIndex > 3) {
+							const lastPayValCell = table.rows[rowIndex - 1].cells[cellIndex + 1];
+							lastPayValCellText = lastPayValCell.innerText;
+						}
+						if (lastPayValCellText !== "") {
+							const lastPayVal = parseInt(lastPayValCellText);
+							if (!isNaN(lastPayVal)) {
+								payVal = Math.ceil(lastPayVal * 1.5 + cellVal + 5);
+								payValCell.innerText = payVal;
+								payVal2Cell.innerText = Math.floor(payVal / 5) + "隻" + (payVal % 5);
+							}
+						}
+					}
+				}
 
                 if (rowIndex < table.rows.length - 1) {
                     const nextCell = table.rows[rowIndex + 1].cells[cellIndex];
