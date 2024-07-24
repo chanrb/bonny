@@ -678,11 +678,12 @@
 		.my-input {
 			position: relative;
 			top: 0px;
-			left: -2px;
+			left: 0px;
 			padding: 0;
 			margin: 0;
 			width: 100%;
 			height: 100%;
+			border: none;
 			text-align: right;
 			display: none;
 		}
@@ -988,11 +989,7 @@
 			});
 			
 			input.addEventListener('blur', function(event) {
-				if (validateInput(this)) {
-					//textNode.style.display = "block";
-					//this.style.display = "none";
-				}
-				else {
+				if (!validateInput(this)) {
 					alert("Input must be a valid positive number.");
 				}
 				valueChanged(this);
@@ -1001,6 +998,7 @@
 			cell.addEventListener('click', function(event) {
 				textNode.style.display = "none";
 				input.style.display = "block";
+				this.style.padding = "2px 0px";
 				input.select();
 			});
         });
@@ -1079,6 +1077,7 @@
 				input.style.display = "none";
 				textNode.innerText = "";
 				textNode.style.display = "block";
+				cell.style.padding = "0px 2px";
 				//input.style.borderColor = "black";
 			}
 			else {
