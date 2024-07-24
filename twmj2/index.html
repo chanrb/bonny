@@ -686,6 +686,12 @@
 			text-align: right;
 			display: none;
 		}
+		
+		input[type=number]::-webkit-inner-spin-button, 
+		input[type=number]::-webkit-outer-spin-button { 
+			-webkit-appearance: none; 
+			margin: 0; 
+		}
     </style>
 </head>
 
@@ -748,7 +754,7 @@
                             <td class="s10" dir="ltr"><div></div><input class="my-input" type="tel"></td>
                             <td class="s11"></td>
                             <td class="s11"></td>
-                            <td class="s12" dir="ltr"><div></div><input class="my-input" type="number"></td>
+                            <td class="s12" dir="ltr"><div></div><input class="my-input" type="number" onwheel="return false;"></td>
                             <td class="s13"></td>
                             <td class="s13"></td>
                             <td class="s14" dir="ltr"><div></div><input class="my-input" type="number"></td>
@@ -983,8 +989,8 @@
 			
 			input.addEventListener('blur', function(event) {
 				if (validateInput(this)) {
-					textNode.style.display = "block";
-					this.style.display = "none";
+					//textNode.style.display = "block";
+					//this.style.display = "none";
 				}
 				else {
 					alert("Input must be a valid positive number.");
@@ -1005,19 +1011,21 @@
 			
 			var inputVal = ""
 			inputText = input.value.trim();
+			resetCell(cell);
+			
 			if (inputText !== "") {
 				const validInput = /^\d+$/;
 				inputVal = parseInt(inputText);
 				if (!validInput.test(inputText) || isNaN(inputVal)) {
-					//cell.style.boxShadow = "inset 0 0 0 1px red";
-					input.style.borderColor = "red";
-					textNode.innerText = "";
-					console.log(inputText);
+					cell.style.boxShadow = "inset 0 0 0 1px red";
+					//input.style.borderColor = "red";
+					
+					input.value = inputText;
+					textNode.innerText = inputText;
 					return false;
 				}
 			}
 			
-			resetCell(cell);
 			input.value = inputVal;
 			textNode.innerText = inputVal;
 			
@@ -1025,10 +1033,7 @@
 		}
 		
         function valueChanged(input) {
-			console.log("A");
-			console.log(input);
 			const cell = input.parentElement;
-			console.log(cell);
 			const textNode = cell.querySelector("div");
             const row = cell.parentElement;
             const rowIndex = row.rowIndex;
@@ -1040,9 +1045,7 @@
 			payVal2Cell.innerText = ""
 			
 			const inputText = textNode.innerText
-			console.log(inputText);
 			if (inputText !== "") {
-			
 				const inputVal = parseInt(inputText);
 				if (!isNaN(inputVal)) {
 					var lastPayValCellText = "0";
@@ -1056,7 +1059,6 @@
 							payVal = Math.ceil(lastPayVal * 1.5 + inputVal + 5);
 							payValCell.innerText = payVal;
 							payVal2Cell.innerText = Math.floor(payVal / 5) + "隻" + (payVal % 5);
-							console.log(payVal2Cell.innerText);
 						}
 					}
 				}
@@ -1077,13 +1079,13 @@
 				input.style.display = "none";
 				textNode.innerText = "";
 				textNode.style.display = "block";
-				input.style.borderColor = "black";
+				//input.style.borderColor = "black";
 			}
 			else {
 				cell.innerText = "";
 			}
 			
-			//cell.style.boxShadow = "none";	
+			cell.style.boxShadow = "none";	
         }
 
         function clearAllData() {
@@ -1101,7 +1103,6 @@
                 for (let j = startCellIndex; j <= endCellIndex; j++) {
                     const cell = row.cells[j];
                     resetCell(cell);
-					console.log("row:" + i + "cell:" + j);
                 }
             }
         }
