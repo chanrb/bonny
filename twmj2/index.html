@@ -816,7 +816,7 @@
                             <th id="49179443R5" style="height: 21px;" class="row-headers-background row-header-shim">
                                 <div class="row-header-wrapper" style="line-height: 20px">6</div>
                             </th>
-                            <td class="s5">2</td>
+                            <td class="s5">4</td>
                             <td class="s10" dir="ltr"><div class="my-input-text"></div><input class="my-input" type="number"></td>
                             <td class="s11"></td>
                             <td class="s11"></td>
@@ -1010,6 +1010,7 @@
 				textNode.style.display = "none";
 				input.style.display = "block";
 				this.style.verticalAlign = "middle";
+				this.style.padding = "0 0";
 				input.select();
 			});
         });
@@ -1089,7 +1090,8 @@
 				textNode.innerText = "";
 				textNode.style.display = "block";
 				cell.style.verticalAlign = "bottom";
-			}
+				cell.style.padding = "3px 3px 0px 0px";
+;			}
 			else {
 				cell.innerText = "";
 			}
