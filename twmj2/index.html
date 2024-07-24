@@ -998,7 +998,8 @@
 			cell.addEventListener('click', function(event) {
 				textNode.style.display = "none";
 				input.style.display = "block";
-				this.style.padding = "2px 0px";
+				this.style.verticalAlign = "middle";
+				//this.style.padding = "0";
 				input.select();
 			});
         });
@@ -1077,7 +1078,8 @@
 				input.style.display = "none";
 				textNode.innerText = "";
 				textNode.style.display = "block";
-				cell.style.padding = "0px 2px";
+				//cell.style.padding = "0px 2px";
+				cell.style.verticalAlign = "bottom";
 				//input.style.borderColor = "black";
 			}
 			else {
