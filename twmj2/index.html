@@ -658,7 +658,35 @@
         }
     </style>
     <style>
-        .my-button {
+		.player-container {
+			display: flex; 
+			justify-content: space-between; 
+			width: 100%;
+			height: 100%;
+		}
+		
+		.player-name-container {
+			display: flex; 
+			flex-direction: column; 
+			justify-content: flex-end; 
+			overflow: hidden; 
+			width: 100px; 
+			padding: 1px 1px 0px 2px;
+		}
+		
+		.player-clear-button-container {
+			display:flex; 
+			align-items: center; 
+			padding:1px 0px 1px 4px;
+		}
+        
+		.clear-button-container {
+			display:flex; 
+			align-items: center; 
+			padding:1px 1px 1px 1px;
+		}
+		
+		.my-button {
             padding: 0px 5px 0px 5px;
 			font-family: docs-Calibri, Arial;
             font-size: 13px;
@@ -738,11 +766,43 @@
                             <th id="49179443R0" style="height: 21px;" class="row-headers-background row-header-shim">
                                 <div class="row-header-wrapper" style="line-height: 20px">1</div>
                             </th>
-                            <td class="s0"></td>
-                            <td class="s1" dir="ltr" colspan="3" contenteditable="true">Name1</td>
-                            <td class="s2" dir="ltr" colspan="3" contenteditable="true">Name2</td>
-                            <td class="s3" dir="ltr" colspan="3" contenteditable="true">Name3</td>
-                            <td class="s4" dir="ltr" colspan="3" contenteditable="true">Others</td>
+                            <td class="s0" style="padding:0px;">
+								<div class="clear-button-container">
+									<button class="my-button" onclick="clearAllData()">清</button>
+								</div>
+							</td>
+                            <td class="s1" dir="ltr" colspan="3">
+								<div class="player-container">
+									<div class="player-name-container" contenteditable="true">Name1</div>
+									<div class="player-clear-button-container">
+										<button class="my-button" onclick="clearData(1)">投降</button>
+									</div>
+								</div>
+							</td>
+                            <td class="s2" dir="ltr" colspan="3">
+								<div class="player-container">
+									<div class="player-name-container" contenteditable="true">Name2</div>
+									<div class="player-clear-button-container">
+										<button class="my-button" onclick="clearData(2)">投降</button>
+									</div>
+								</div>
+							</td>
+                            <td class="s3" dir="ltr" colspan="3">
+								<div class="player-container">
+									<div class="player-name-container" contenteditable="true">Name3</div>
+									<div class="player-clear-button-container">
+										<button class="my-button" onclick="clearData(3)">投降</button>
+									</div>
+								</div>
+							</td>
+                            <td class="s4" dir="ltr" colspan="3">
+								<div class="player-container">
+									<div class="player-name-container" contenteditable="true">Others</div>
+									<div class="player-clear-button-container">
+										<button class="my-button" onclick="clearData(4)">清</button>
+									</div>
+								</div>
+							</td>
                         </tr>
                         <tr style="height: 21px">
                             <th id="49179443R1" style="height: 21px;" class="row-headers-background row-header-shim">
@@ -941,11 +1001,11 @@
                     </tbody>
                 </table>
             </div>
-            <div id="embed_257972543" class="waffle-embedded-object-overlay" style="display: block; left: 1px; top: 1px; border: none;"><button class="my-button" onclick="clearAllData()">清</button></div>
+            <!--<div id="embed_257972543" class="waffle-embedded-object-overlay" style="display: block; left: 1px; top: 1px; border: none;"><button class="my-button" onclick="clearAllData()">清</button></div>
             <div id="embed_1196274138" class="waffle-embedded-object-overlay" style="display: block; left: 122px; top: 1px; border: none;"><button class="my-button" onclick="clearData(1)">投降</button></div>
             <div id="embed_1646089430" class="waffle-embedded-object-overlay" style="display: block; left: 256px; top: 1px; border: none;"><button class="my-button" onclick="clearData(2)">投降</button></div>
             <div id="embed_1807947219" class="waffle-embedded-object-overlay" style="display: block; left: 390px; top: 1px; border: none;"><button class="my-button" onclick="clearData(3)">投降</button></div>
-            <div id="embed_1330306613" class="waffle-embedded-object-overlay" style="display: block; left: 537px; top: 1px; border: none;"><button class="my-button" onclick="clearData(4)">清</button></div>
+            <div id="embed_1330306613" class="waffle-embedded-object-overlay" style="display: block; left: 537px; top: 1px; border: none;"><button class="my-button" onclick="clearData(4)">清</button></div>-->
         </div>
     </div>
     <div id="footer"><span>Published by <a target="_blank" title="Learn more about Google Sheets" href="https://docs.google.com/spreadsheets/u/0/?authuser=0&amp;usp=sheets_web">Google Sheets</a></span><span class="dash">–</span><a href="https://drive.google.com/u/0/abuse?id=AKkXjozcUHaSbZ-LpipnuFVAcykOe8qfGKcSX7bmJvd_fLGuRdy9fkbSVqvNLhSIyWP_D5IjKIj9JyK2EENVXNk:0&amp;docurl=https://docs.google.com/spreadsheets/d/e/2PACX-1vQQERMFnIOzmBnKm9vUzVZFRM2dmzEioALdXI5raREhhW9nZYlqtizXW7AjTFvQwEBSipGmoR9bLk9d/pubhtml?gid%3D49179443%26single%3Dtrue">Report Abuse</a><span class="dash">–</span><span>Updated automatically every 5 minutes</span></div>
@@ -987,7 +1047,7 @@
 					this.blur();
 					event.preventDefault();
 					
-					if (validateInput(this)) {
+					if (validateInput(this) && input.value !== "") {
 						const row = cell.parentElement;
 						const rowIndex = row.rowIndex;
 						const cellIndex = cell.cellIndex;
