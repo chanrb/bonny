@@ -751,10 +751,10 @@
                                 <div class="row-header-wrapper" style="line-height: 20px">3</div>
                             </th>
                             <td class="s5">1</td>
-                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="tel"></td>
+                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="number"></td>
                             <td class="s11"></td>
                             <td class="s11"></td>
-                            <td class="s12" dir="ltr"><div></div><input class="my-input" type="number" onwheel="return false;"></td>
+                            <td class="s12" dir="ltr"><div></div><input class="my-input" type="number"></td>
                             <td class="s13"></td>
                             <td class="s13"></td>
                             <td class="s14" dir="ltr"><div></div><input class="my-input" type="number"></td>
@@ -769,7 +769,7 @@
                                 <div class="row-header-wrapper" style="line-height: 20px">4</div>
                             </th>
                             <td class="s5">2</td>
-                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="tel"></td>
+                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="number"></td>
                             <td class="s11"></td>
                             <td class="s11"></td>
                             <td class="s12" dir="ltr"><div></div><input class="my-input" type="number"></td>
@@ -787,7 +787,7 @@
                                 <div class="row-header-wrapper" style="line-height: 20px">5</div>
                             </th>
                             <td class="s5">3</td>
-                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="tel"></td>
+                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="number"></td>
                             <td class="s11"></td>
                             <td class="s11"></td>
                             <td class="s12" dir="ltr"><div></div><input class="my-input" type="number"></td>
@@ -805,7 +805,7 @@
                                 <div class="row-header-wrapper" style="line-height: 20px">6</div>
                             </th>
                             <td class="s5">4</td>
-                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="tel"></td>
+                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="number"></td>
                             <td class="s11"></td>
                             <td class="s11"></td>
                             <td class="s12" dir="ltr"><div></div><input class="my-input" type="number"></td>
@@ -823,7 +823,7 @@
                                 <div class="row-header-wrapper" style="line-height: 20px">7</div>
                             </th>
                             <td class="s5">5</td>
-                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="tel"></td>
+                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="number"></td>
                             <td class="s11"></td>
                             <td class="s11"></td>
                             <td class="s12" dir="ltr"><div></div><input class="my-input" type="number"></td>
@@ -841,7 +841,7 @@
                                 <div class="row-header-wrapper" style="line-height: 20px">8</div>
                             </th>
                             <td class="s5">6</td>
-                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="tel"></td>
+                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="number"></td>
                             <td class="s11"></td>
                             <td class="s11"></td>
                             <td class="s12" dir="ltr"><div></div><input class="my-input" type="number"></td>
@@ -859,7 +859,7 @@
                                 <div class="row-header-wrapper" style="line-height: 20px">9</div>
                             </th>
                             <td class="s5">7</td>
-                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="tel"></td>
+                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="number"></td>
                             <td class="s11"></td>
                             <td class="s11"></td>
                             <td class="s12" dir="ltr"><div></div><input class="my-input" type="number"></td>
@@ -877,7 +877,7 @@
                                 <div class="row-header-wrapper" style="line-height: 20px">10</div>
                             </th>
                             <td class="s5">8</td>
-                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="tel"></td>
+                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="number"></td>
                             <td class="s11"></td>
                             <td class="s11"></td>
                             <td class="s12" dir="ltr"><div></div><input class="my-input" type="number"></td>
@@ -895,7 +895,7 @@
                                 <div class="row-header-wrapper" style="line-height: 20px">11</div>
                             </th>
                             <td class="s5">9</td>
-                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="tel"></td>
+                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="number"></td>
                             <td class="s11"></td>
                             <td class="s11"></td>
                             <td class="s12" dir="ltr"><div></div><input class="my-input" type="number"></td>
@@ -913,7 +913,7 @@
                                 <div class="row-header-wrapper" style="line-height: 20px">12</div>
                             </th>
                             <td class="s5">10</td>
-                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="tel"></td>
+                            <td class="s10" dir="ltr"><div></div><input class="my-input" type="number"></td>
                             <td class="s11"></td>
                             <td class="s11"></td>
                             <td class="s12" dir="ltr"><div></div><input class="my-input" type="number"></td>
@@ -1047,7 +1047,7 @@
 			const inputText = textNode.innerText
 			if (inputText !== "") {
 				const inputVal = parseInt(inputText);
-				if (!isNaN(inputVal)) {
+				if (validateInput(input) && !isNaN(inputVal)) {
 					var lastPayValCellText = "0";
 					if (rowIndex > 3) {
 						const lastPayValCell = table.rows[rowIndex - 1].cells[cellIndex + 1];
